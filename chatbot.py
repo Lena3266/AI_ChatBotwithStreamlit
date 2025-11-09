@@ -63,9 +63,9 @@ if user_input:
 
 
         # Extracting the model's answer from the generated text
-        if "Assistant:" in generation_output:
+    if "Assistant:" in generation_output:
             generated_answer = generation_output.split("Assistant:")[-1].strip()
-        else:
+    else:
             generated_answer = generation_output.strip()
 
     # ✅ Move these inside the block
