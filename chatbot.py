@@ -52,19 +52,29 @@ if user_input:
         text_generator = load_generator()
         prompt = build_conversation_prompt(st.session_state.get('chat_history', []), user_input)
 
-        generation_output = text_generator(
-            prompt,
-            max_new_tokens=max_new_tokens,
-            do_sample=True,
-            temperature=temperature,
-            pad_token_id=text_generator.tokenizer.eos_token_id
-            eos_token_id=text_generator.tokenizer.eos_token_id
-        )[0]['generated_text']
+    generation_output = text_generator(
+        prompt,
+        max_new_tokens=max_new_tokens,
+        do_sample=True,
+        temperature=temperature,
+        pad_token_id=text_generator.tokenizer.eos_token_id,
+        eos_token_id=text_generator.tokenizer.eos_token_id
+)[0]['generated_text']
+
 
         # Extracting the model's answer from the generated text
         if "Assistant:" in generation_output:
             generated_answer = generation_output.split("Assistant:")[-1].strip()
+        else:
+            generated_answer = generation_output.strip()
 
-# Displaying and storinn chatbot response
-st.chat_message("assistant").markdown(generated_answer)
-st.session_state.setdefault('chat_history', []).append((user_input, generated_answer))
+    # ✅ Move these inside the block
+    st.chat_message("assistant").markdown(generated_answer)
+    st.session_state.setdefault('chat_history', []).append((user_input, generated_answer))
+
+          # Displaying and storing chatbot response  
+    st.chat_message("assistant").markdown(generated_answer)
+    st.session_state.setdefault('chat_history', []).append((user_input, generated_answer))
+        
+
+
