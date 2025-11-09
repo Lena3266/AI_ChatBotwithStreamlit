@@ -66,7 +66,7 @@ if user_input:
 )[0]['generated_text']
 
 
-        # Extracting the model's answer from the generated text
+    # Extracting the model's answer from the generated text
     if "Assistant:" in generation_output:
             generated_answer = generation_output.split("Assistant:")[-1].strip()
     else:
