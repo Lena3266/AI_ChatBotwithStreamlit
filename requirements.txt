@@ -2,3 +2,4 @@ streamlit
 transformers==4.35.0
 huggingface_hub==0.20.0
 torch
+tokenizers==0.14.1
