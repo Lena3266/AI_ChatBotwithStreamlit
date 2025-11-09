@@ -1,5 +1,5 @@
-streamlit
+streamlit==1.28.2
 transformers==4.35.0
 huggingface_hub==0.20.0
-torch
 tokenizers==0.14.1
+torch==2.1.0
